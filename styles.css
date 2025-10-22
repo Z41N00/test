@@ -1,0 +1,87 @@
+
+:root{
+  --bg:#0b0214;
+  --purple-1:#7c3aed;
+  --purple-2:#9f7aea;
+  --accent:#c084fc;
+  --glow: rgba(192,132,252,0.9);
+  --glass: rgba(255,255,255,0.04);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, #1b0630 0%, rgba(11,2,20,1) 35%), linear-gradient(180deg,#0b0214 0%, #12031a 100%);
+  color:#ece7ff;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* star background + shooting stars canvas */
+.sky{position:fixed;inset:0;z-index:-2;pointer-events:none}
+.starfield{
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,0.06) 0 1px, transparent 2px),
+    radial-gradient(circle at 45% 35%, rgba(255,255,255,0.05) 0 1px, transparent 2px),
+    radial-gradient(circle at 75% 60%, rgba(255,255,255,0.04) 0 1px, transparent 2px);
+  background-size: 1400px 900px;
+  animation: drift 36s linear infinite;
+  mix-blend-mode: screen;
+  opacity:0.95;
+}
+@keyframes drift{0%{transform:translateY(0)}50%{transform:translateY(-80px)}100%{transform:translateY(0)}}
+
+/* hero */
+.hero{padding:44px 20px;text-align:center}
+.hero h1{font-size:clamp(26px,6vw,54px);margin:0;color:var(--accent);text-shadow:0 0 24px var(--glow)}
+.subtitle{margin:6px 0 0;opacity:0.95}
+
+/* layout */
+.wrap{width:min(1100px,96%);margin:18px auto 80px;display:grid;grid-template-columns:1fr;gap:18px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);border-radius:14px;padding:18px;box-shadow:0 12px 40px rgba(0,0,0,0.6);backdrop-filter:blur(6px)}
+.card-compact{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+
+/* exam dates glowing list */
+.glow-dates{list-style:none;padding:0;margin:6px 0 0}
+.glow-dates li{margin:8px 0;font-size:16px;display:flex;justify-content:space-between;align-items:center}
+.glow-dates span{color:var(--accent);text-shadow:0 0 12px var(--glow);font-weight:700;}
+
+/* week grid */
+.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-top:12px}
+.day{min-height:120px;display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:flex-start;padding:12px;border-radius:12px;position:relative;overflow:hidden}
+.day-name{font-weight:800;margin-bottom:4px}
+.subjects{width:100%;display:flex;flex-direction:column;gap:8px}
+
+/* subject block */
+.subj{
+  padding:10px;border-radius:10px;background:linear-gradient(135deg, rgba(124,58,237,0.12), rgba(159,122,234,0.06));
+  border:1px solid rgba(124,58,237,0.14);backdrop-filter:blur(4px);text-align:center;font-weight:700;
+  transform:translateY(0);transition:transform .35s ease, box-shadow .35s ease;
+  box-shadow: 0 6px 20px rgba(124,58,237,0.06);
+  animation: fadeInUp .6s ease both;
+}
+.subj:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(124,58,237,0.18)}
+
+/* pulse animation */
+@keyframes pulseGlow{
+  0%{box-shadow:0 6px 20px rgba(124,58,237,0.06)}
+  50%{box-shadow:0 18px 50px rgba(192,132,252,0.22)}
+  100%{box-shadow:0 6px 20px rgba(124,58,237,0.06)}
+}
+.subj.pulse{animation: pulseGlow 3s ease-in-out infinite}
+
+/* fade-in-up */
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* responsive */
+@media(max-width:900px){
+  .week-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* footer */
+.footer{text-align:center;padding:12px;opacity:0.85;position:fixed;right:12px;bottom:12px;font-size:12px}

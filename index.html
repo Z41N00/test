@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zain's GCSE 2026 Revision Timetable</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sky">
+    <canvas id="shootingStars"></canvas>
+    <div class="starfield"></div>
+  </div>
+
+  <header class="hero">
+    <h1>Zain's GCSE 2026 Revision</h1>
+    <p class="subtitle">Radical Purple • Animated • 7 days a week</p>
+  </header>
+
+  <main class="wrap">
+    <section class="dates card">
+      <h2>Exam Dates (edit directly in this HTML)</h2>
+      <ul class="glow-dates">
+        <li>Computer Science — <span id="date-cs">June 2, 2026</span></li>
+        <li>Chemistry — <span id="date-chem">June 5, 2026</span></li>
+        <li>Biology — <span id="date-bio">June 9, 2026</span></li>
+        <li>Physics — <span id="date-phy">June 12, 2026</span></li>
+        <li>Maths — <span id="date-math">June 16, 2026</span></li>
+        <li>English Language — <span id="date-el">June 20, 2026</span></li>
+        <li>English Literature — <span id="date-elit">June 23, 2026</span></li>
+        <li>Psychology — <span id="date-psy">June 27, 2026</span></li>
+      </ul>
+    </section>
+
+    <section class="timetable card">
+      <h2>Weekly Revision Plan</h2>
+      <p class="hint">Weekdays: 1 subject, 2 hours each. Weekends: 2 subjects, 2 hours each (4 hours total).</p>
+
+      <div class="week-grid" id="weekGrid">
+        <!-- JS will populate -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Made for Zain • Radical Purple • Edit exam dates in this file</p>
+  </footer>
+
+  <template id="dayTpl">
+    <div class="day card-compact">
+      <div class="day-name"></div>
+      <div class="subjects"></div>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
